@@ -64,6 +64,11 @@ class VitestUtils {
     return this
   }
 
+  public async runAllAsyncTimers() {
+    await this._timers.runAllAsyncTimers()
+    return this
+  }
+
   public runAllTicks() {
     this._timers.runAllTicks()
     return this
