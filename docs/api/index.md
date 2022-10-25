@@ -2665,6 +2665,26 @@ Vitest provides utility functions to help you out through it's **vi** helper. Yo
   vi.runAllTimers()
   ```
 
+### vi.runAllAsyncTimers
+
+- **Type:** `() => Vitest`
+
+  This method will asynchronously invoke every initiated timer until the timers queue is empty. It means that every timer called during `runAllAsyncTimers` will be fired. If you have an infinite interval,
+  it will throw after 10 000 tries. For example this will log `1, 2, 3`:
+
+  ```ts
+  let i = 0
+  setTimeout(() => console.log(++i))
+  const interval = setInterval(() => {
+    console.log(++i)
+    if (i === 3)
+      clearInterval(interval)
+
+  }, 50)
+
+  await vi.runAllAsyncTimers()
+  ```
+
 ### vi.runOnlyPendingTimers
 
 - **Type:** `() => Vitest`
