@@ -8,6 +8,8 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+
 
 env:
   VITEST_SEGFAULT_RETRY: 3
